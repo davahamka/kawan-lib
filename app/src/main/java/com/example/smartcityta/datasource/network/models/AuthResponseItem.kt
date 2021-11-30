@@ -19,9 +19,6 @@ data class AuthResponseItem(
 	@field:SerializedName("id")
 	val id: Int,
 
-	@field:SerializedName("published_at")
-	val publishedAt: String,
-
 	@field:SerializedName("email")
 	val email: String,
 

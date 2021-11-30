@@ -25,14 +25,27 @@ class RegisterViewModel: ViewModel() {
 
     fun postRegister(auths:AuthResponseItem){
         _isLoading.value = true
-        val client = ApiConfig.getApiService().createAuth(
-            username = auths.username,
-            password = auths.password,
-            email = auths.email,
-            nama = auths.nama,
-            alamat = auths.alamat
+        val client = ApiConfig.getApiService().createAuth(auths)
+
+        client.enqueue(object : Callback<AuthResponseItem>{
+            override fun onResponse(
+                call: Call<AuthResponseItem>,
+                response: Response<AuthResponseItem>
+            ) {
+                _isLoading.value = false
+                if(response.isSuccessful){
+                    Log.e("COBA REGISTER","berhasil register!!!")
+                } else {
+                    Log.e(RegisterViewModel.TAG, "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<AuthResponseItem>, t: Throwable) {
+                _isLoading.value = false
+                Log.e(RegisterViewModel.TAG, "onFailure: ${t.message.toString()}")
+            }
+        }
         )
-        client
     }
 
 }

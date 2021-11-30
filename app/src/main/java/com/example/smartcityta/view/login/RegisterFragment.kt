@@ -1,15 +1,14 @@
 package com.example.smartcityta.view.login
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.example.smartcityta.R
 import com.example.smartcityta.databinding.FragmentRegisterBinding
+import com.example.smartcityta.datasource.network.models.AuthResponseItem
 
 class RegisterFragment : Fragment() {
 
@@ -26,6 +25,9 @@ class RegisterFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val registerViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(RegisterViewModel::class.java)
+
+
         binding.buttonRegister.setOnClickListener{
 
             var validData = 0;
@@ -86,6 +88,23 @@ class RegisterFragment : Fragment() {
                 binding.editTextNama.text.clear()
                 binding.editTextEmail.text.clear()
                 binding.editTextAlamat.text.clear()
+                registerViewModel.postRegister(AuthResponseItem(
+                    password = password,
+                    nama = nama,
+                    username= username,
+                    email = email,
+                    alamat = alamat,
+                    updatedAt = "",
+                    createdAt = "",
+                    id = 0
+                ))
+
+                val mSuccessRegisterFragment = SuccessRegisterFragment()
+                val mFragmentManager = parentFragmentManager
+                mFragmentManager.beginTransaction().apply {
+                    replace(R.id.frame_container, mSuccessRegisterFragment, SuccessRegisterFragment::class.java.simpleName)
+                    commit()
+                }
             }
 
 

@@ -8,14 +8,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.example.smartcityta.R
 import com.example.smartcityta.databinding.FragmentLoginBinding
 import com.example.smartcityta.view.home.HomeActivity
 import com.example.smartcityta.view.home.MainActivity
 
 class LoginFragment : Fragment(), View.OnClickListener {
+    private var username: String?= null
+    private var password: String?= null
     private var _binding:FragmentLoginBinding?=null
     private val binding get() = _binding!!
+
+    private val viewModel:LoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,7 +37,27 @@ class LoginFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         binding.btnRegister.setOnClickListener(this)
         binding.btnLogin.setOnClickListener(this)
+
+        observeAuth()
     }
+
+    private fun observeAuth() {
+        viewModel.auths.observe(viewLifecycleOwner){ auths->
+            val checkAuth = auths.singleOrNull { auth->
+                auth.username == username && auth.password == password
+            }
+
+            if(checkAuth != null){
+                val moveIntent = Intent(activity, HomeActivity::class.java)
+                startActivity(moveIntent)
+            } else {
+                binding.editTextUsername.error = "Username salah"
+                binding.editTextPassword.error = "Password salah"
+            }
+        }
+
+    }
+
 
     override fun onClick(v: View) {
         if(v.id == R.id.btn_register){
@@ -46,17 +72,17 @@ class LoginFragment : Fragment(), View.OnClickListener {
             var validData = 0
 
 
-            val username = binding.editTextUsername.text.toString()
-            val password = binding.editTextPassword.text.toString()
+            username = binding.editTextUsername.text.toString()
+            password = binding.editTextPassword.text.toString()
 
-            if(username.isEmpty()){
+            if(username.isNullOrEmpty()){
                 binding.editTextUsername.error = "Username kosong"
 
             } else {
                 validData +=1
             }
 
-            if(password.isEmpty()){
+            if(password.isNullOrEmpty()){
                 binding.editTextPassword.error = "Password kosong"
 
             } else {
@@ -64,10 +90,12 @@ class LoginFragment : Fragment(), View.OnClickListener {
             }
 
             if(validData == 2){
-                val moveIntent = Intent(context, HomeActivity::class.java)
-                startActivity(moveIntent)
+                binding.editTextUsername.text.clear()
+                binding.editTextPassword.text.clear()
+                viewModel.allAuths()
             }
 
         }
+
     }
 }
