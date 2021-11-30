@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.smartcityta.datasource.network.ApiConfig
 import com.example.smartcityta.datasource.network.models.AuthResponseItem
+import com.example.smartcityta.utils.UserPrefence
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,13 +24,11 @@ class AccountViewModel : ViewModel() {
         private const val USER_ID = "2"
     }
 
-    init {
-        findAuth()
-    }
 
-   private fun findAuth(){
+    fun findAuth(id:String){
        _isLoading.value = true
-       val client = ApiConfig.getApiService().getAuth(USER_ID)
+
+       val client = ApiConfig.getApiService().getAuth(id)
        client.enqueue(object : Callback<AuthResponseItem>{
            override fun onResponse(
                call: Call<AuthResponseItem>,
@@ -48,8 +47,6 @@ class AccountViewModel : ViewModel() {
                Log.e(TAG, "onFailure: ${t.message.toString()}")
            }
        }
-
-
        )
    }
 }

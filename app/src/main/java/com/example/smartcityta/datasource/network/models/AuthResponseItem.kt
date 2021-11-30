@@ -1,7 +1,10 @@
 package com.example.smartcityta.datasource.network.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class AuthResponseItem(
 
 	@field:SerializedName("password")
@@ -27,4 +30,4 @@ data class AuthResponseItem(
 
 	@field:SerializedName("alamat")
 	val alamat: String
-)
+):Parcelable
