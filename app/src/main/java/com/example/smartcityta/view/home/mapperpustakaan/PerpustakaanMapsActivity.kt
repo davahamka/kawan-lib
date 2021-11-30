@@ -48,7 +48,7 @@ class PerpustakaanMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val letakPerpus = LatLng(perpus.lat, perpus.long)
         mMap.addMarker(MarkerOptions().position(letakPerpus).title(perpus.nama))
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(letakPerpus, 17.0f))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(letakPerpus, 20.0f))
 
     }
 

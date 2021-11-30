@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.example.smartcityta.databinding.FragmentAccountBinding
 import com.example.smartcityta.datasource.network.models.AuthResponseItem
 import com.example.smartcityta.view.home.HomeActivity
@@ -45,6 +46,11 @@ class AccountFragment : Fragment() {
             val moveIntent = Intent(activity, LoginActivity::class.java)
             startActivity(moveIntent)
         }
+
+        binding.buttonMoveEditAccount.setOnClickListener{
+            val moveIntent = Intent(activity, EditAccountActivity::class.java)
+            startActivity(moveIntent)
+        }
     }
 
     override fun onDestroyView() {
@@ -58,5 +64,6 @@ class AccountFragment : Fragment() {
         binding.textUsername.text = auth.username
         binding.textAlamat.text = auth.alamat
         binding.textEmail.text = auth.email
+        Glide.with(binding.root).load("https://ui-avatars.com/api/?size=72&name=${auth.nama}").into(binding.circleImageViewAccount)
     }
 }
