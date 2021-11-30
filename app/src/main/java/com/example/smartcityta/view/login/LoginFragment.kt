@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.smartcityta.R
 import com.example.smartcityta.databinding.FragmentLoginBinding
+import com.example.smartcityta.utils.UserPrefence
 import com.example.smartcityta.view.home.HomeActivity
 import com.example.smartcityta.view.home.MainActivity
 
@@ -48,6 +49,11 @@ class LoginFragment : Fragment(), View.OnClickListener {
             }
 
             if(checkAuth != null){
+                val userPrefence = UserPrefence(requireContext())
+
+                userPrefence.setUser(checkAuth.id.toString())
+
+                activity?.finishAffinity()
                 val moveIntent = Intent(activity, HomeActivity::class.java)
                 startActivity(moveIntent)
             } else {

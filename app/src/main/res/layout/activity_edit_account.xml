@@ -19,38 +19,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewEditUsername"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="Username"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textEditAccountTitle" />
-
-    <EditText
-        android:id="@+id/textEditAccountUsername"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/edittext_rounded"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEditUsername" />
-
-    <TextView
         android:id="@+id/textViewEditEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:text="Email"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textEditAccountUsername" />
+        app:layout_constraintTop_toBottomOf="@+id/textEditAccountTitle" />
 
     <EditText
         android:id="@+id/textEditAccountEmail"
@@ -119,34 +95,33 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="160dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/button_primary"
         android:text="Edit Your Account"
-        android:textSize="16sp"
-        android:textColor="@color/white"
         android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonExitEdit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintTop_toBottomOf="@+id/textEditAccountAlamat" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonExitEdit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/button_outline"
         android:text="Exit"
-        android:textSize="16sp"
-        android:textColor="@color/blue_500"
         android:textAllCaps="false"
+        android:textColor="@color/blue_500"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEditAccount" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
