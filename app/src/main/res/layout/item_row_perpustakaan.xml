@@ -50,11 +50,13 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:text="TextView"
-            android:layout_marginRight="8dp"
             android:textSize="12sp"
-            tools:text="Alamat Perpustakaan"
+            android:maxWidth="250dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/imageViewPerpustakaan"
-            app:layout_constraintTop_toBottomOf="@+id/textNamaPerpustakaan" />
+            app:layout_constraintTop_toBottomOf="@+id/textNamaPerpustakaan"
+            tools:text="Alamat Perpustakaan" />
 
         <TextView
             android:id="@+id/textPengunjungPerpustakaan"
