@@ -45,25 +45,51 @@ class EditAccountActivity : AppCompatActivity() {
             finish()
         }
         binding.buttonEditAccount.setOnClickListener{
+            var valid = 0
             val email = binding.textEditAccountEmail.text.toString()
             val nama = binding.textEditAccountNama.text.toString()
             val alamat = binding.textEditAccountAlamat.text.toString()
 
+            if(email.isEmpty()){
+                binding.textEditAccountEmail.error = "Field masih kosong"
+            } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                binding.textEditAccountEmail.error = "Email tidak valid"
+            } else {
+                valid += 1
+            }
 
-            viewModel.postEdit(AuthResponseItem(
-                password = auth.password,
-                nama = nama,
-                username= auth.username,
-                email = email,
-                alamat = alamat,
-                updatedAt = "",
-                createdAt = "",
-                id = auth.id
-            ))
+            if(nama.isEmpty()){
+                binding.textEditAccountNama.error = "Field masih kosong"
+            } else {
+                valid+=1
+            }
 
-            viewModel.auth.observe(this){auth->
-                if (auth.status==Status.SUCCESS){
-                    Toast.makeText(this,"Akun berhasil diubah",Toast.LENGTH_SHORT).show()
+            if(alamat.isEmpty()){
+                binding.textEditAccountAlamat.error = "Field masih ksong"
+            } else {
+                valid += 1
+            }
+
+
+            if(valid==3) {
+                viewModel.postEdit(
+                    AuthResponseItem(
+                        password = auth.password,
+                        nama = nama,
+                        username = auth.username,
+                        email = email,
+                        alamat = alamat,
+                        updatedAt = "",
+                        createdAt = "",
+                        id = auth.id
+                    )
+                )
+
+
+                viewModel.auth.observe(this) { auth ->
+                    if (auth.status == Status.SUCCESS) {
+                        Toast.makeText(this, "Akun berhasil diubah", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }

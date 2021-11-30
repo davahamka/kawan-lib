@@ -50,7 +50,9 @@ class RegisterFragment : Fragment() {
 
             if(password.isEmpty()){
                 binding.editTextPassword.error = "Field masih kosong"
-            } else {
+            }else if(password.length<4){
+                binding.editTextPassword.error = "Minimal panjang 4 Karakter"
+            }else{
                 validData += 1
             }
 
@@ -71,7 +73,9 @@ class RegisterFragment : Fragment() {
 
             if(email.isEmpty()){
                 binding.editTextEmail.error = "Field masih kosong"
-            } else {
+            }else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                binding.editTextEmail.error = "Email tidak valid"
+            }else {
                 validData += 1
             }
 
