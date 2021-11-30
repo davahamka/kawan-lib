@@ -1,10 +1,7 @@
 import com.example.smartcityta.datasource.network.models.AuthResponseItem
 import com.example.smartcityta.datasource.network.models.PerpustakaanResponseItem
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ApiService {
     @GET("/perpustakaans")
@@ -26,5 +23,11 @@ interface ApiService {
     @POST("auths")
     fun createAuth(
        @Body authResponseItem: AuthResponseItem
+    ):Call<AuthResponseItem>
+
+    @PUT("auths/{id}")
+    fun editAuth(
+        @Path("id") id:String,
+        @Body authResponseItem: AuthResponseItem
     ):Call<AuthResponseItem>
 }
