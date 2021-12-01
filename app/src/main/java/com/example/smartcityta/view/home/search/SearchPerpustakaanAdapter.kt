@@ -13,7 +13,7 @@ import com.example.smartcityta.BuildConfig.BASE_URL_CMS
 import com.example.smartcityta.R
 import com.example.smartcityta.datasource.network.models.PerpustakaanResponseItem
 
-class SearchPerpustakaanAdapter(private val listPerpustakaan:List<PerpustakaanResponseItem>)
+class SearchPerpustakaanAdapter(private val listPerpustakaan:List<PerpustakaanResponseItem>, private val onItemClickListener: SearchPerpustakaanAdapter.OnItemClickListener)
     :RecyclerView.Adapter<SearchPerpustakaanAdapter.ListViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ListViewHolder {
@@ -28,6 +28,9 @@ class SearchPerpustakaanAdapter(private val listPerpustakaan:List<PerpustakaanRe
         holder.textJumlahPerpustakaan.text = "${perpus.totalPengunjung} Pengunjung"
         Glide.with(holder.itemView.context).load("${BASE_URL_CMS}${perpus.gambar[0].url}").into(holder.imageViewPerpustakaan)
 
+        holder.buttonLihatDetail.setOnClickListener{
+            onItemClickListener.onItemClicked(listPerpustakaan[position])
+        }
     }
 
     override fun getItemCount(): Int {
@@ -40,6 +43,8 @@ class SearchPerpustakaanAdapter(private val listPerpustakaan:List<PerpustakaanRe
         var textJumlahPerpustakaan:TextView = itemView.findViewById(R.id.textPengunjungPerpustakaan)
         var imageViewPerpustakaan:ImageView = itemView.findViewById(R.id.imageViewPerpustakaan)
         var buttonLihatDetail:Button = itemView.findViewById(R.id.buttonLihatDetail)
+
+
     }
 
     interface OnItemClickListener{

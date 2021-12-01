@@ -32,6 +32,7 @@ class DetailPerpustakaanActivity : AppCompatActivity() {
         binding.textDetailJumlahPerpustakaan.text = "${perpus.totalPengunjung} total pengunjung"
         Glide.with(view).load("${BuildConfig.BASE_URL_CMS}${perpus.gambar[0].url}").into(binding.imageViewPerpustakaan)
 
+
         binding.buttonLihatMap.setOnClickListener{
             val moveIntentWithData = Intent(this, PerpustakaanMapsActivity::class.java)
             moveIntentWithData.putExtra(PerpustakaanMapsActivity.EXTRA_PERPUSTAKAAN, perpus)

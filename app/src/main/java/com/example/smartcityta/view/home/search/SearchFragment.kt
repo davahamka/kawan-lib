@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -24,7 +25,7 @@ import com.example.smartcityta.view.home.home.ListPerpustakaanAdapter
 import com.example.smartcityta.view.home.home.SearchPerpustakaanAdapter
 import com.example.smartcityta.view.home.home.SearchViewModel
 
-class SearchFragment : Fragment() {
+class SearchFragment : Fragment(),SearchPerpustakaanAdapter.OnItemClickListener {
 
     private lateinit var searchViewModel: SearchViewModel
     private var _binding: FragmentSearchBinding? = null
@@ -72,20 +73,41 @@ class SearchFragment : Fragment() {
 
         })
 
+
         binding.btnSearch.setOnClickListener{
+            viewModel.perpustakaans.observe(viewLifecycleOwner){perpustakaans->
+                val searchValue = binding.etSearchPerpustakaan.text.toString()
 
+                val perpusYangDicari = perpustakaans.filter { perpustakaan->
+                    perpustakaan.nama.contains(searchValue,ignoreCase = true)
+                }
+
+                if(searchValue.length <=0){
+                    Toast.makeText(activity, "Harap isi terlebih dahulu",Toast.LENGTH_SHORT).show()
+                }
+                else if(perpusYangDicari.size > 0){
+
+                    val listPerpustakaanAdapter = SearchPerpustakaanAdapter(perpusYangDicari,this)
+                    rvPerpustakaan.adapter = listPerpustakaanAdapter
+                    rvPerpustakaan.layoutManager = LinearLayoutManager(requireContext())
+                }else {
+                    Toast.makeText(activity, "Data tidak ditemukan",Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
-        viewModel.perpustakaans.observe(viewLifecycleOwner){perpustakaans->
-            val listPerpustakaanAdapter = SearchPerpustakaanAdapter(perpustakaans)
-            rvPerpustakaan.adapter = listPerpustakaanAdapter
-            rvPerpustakaan.layoutManager = LinearLayoutManager(requireContext())
-        }
+
 
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onItemClicked(perpustakaan: PerpustakaanResponseItem) {
+        val moveIntentWithData = Intent(activity, DetailPerpustakaanActivity::class.java)
+        moveIntentWithData.putExtra(DetailPerpustakaanActivity.EXTRA_PERPUSTAKAAN, perpustakaan)
+        startActivity(moveIntentWithData)
     }
 }
