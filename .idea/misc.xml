@@ -11,14 +11,7 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/kawan-lib/app/src/main/res/layout/fragment_register.xml" value="0.4" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/kawan-lib/app/src/main/res/layout/fragment_search.xml" value="0.23125" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/kawan-lib/app/src/main/res/layout/item_row_perpustakaan.xml" value="0.23125" />
-        <entry key="..\:/Users/Arifureta/Desktop/Kuliah 2021/PSI/Tugas Akhir/kawan-lib/app/src/main/res/layout/activity_detail_perpustakaan.xml" value="0.3458333333333333" />
-        <entry key="..\:/Users/Arifureta/Desktop/Kuliah 2021/PSI/Tugas Akhir/kawan-lib/app/src/main/res/layout/activity_home.xml" value="0.3458333333333333" />
-        <entry key="..\:/Users/Arifureta/Desktop/Kuliah 2021/PSI/Tugas Akhir/kawan-lib/app/src/main/res/layout/activity_login.xml" value="0.3458333333333333" />
-        <entry key="..\:/Users/Arifureta/Desktop/Kuliah 2021/PSI/Tugas Akhir/kawan-lib/app/src/main/res/layout/fragment_home.xml" value="0.33" />
-        <entry key="..\:/Users/Arifureta/Desktop/Kuliah 2021/PSI/Tugas Akhir/kawan-lib/app/src/main/res/layout/fragment_login.xml" value="0.3458333333333333" />
-        <entry key="..\:/Users/Arifureta/Desktop/Kuliah 2021/PSI/Tugas Akhir/kawan-lib/app/src/main/res/layout/fragment_search.xml" value="0.3458333333333333" />
         <entry key="..\:/Users/Arifureta/Desktop/Kuliah 2021/PSI/Tugas Akhir/kawan-lib/app/src/main/res/layout/item_row_perpustakaan.xml" value="0.33" />
-        <entry key="..\:/Users/Arifureta/Desktop/Kuliah 2021/PSI/Tugas Akhir/kawan-lib/app/src/main/res/layout/item_row_search_perpustakaan.xml" value="0.3458333333333333" />
         <entry key="app/src/main/res/drawable/button_outline.xml" value="0.3359375" />
         <entry key="app/src/main/res/drawable/button_outline_danger.xml" value="0.15104166666666666" />
         <entry key="app/src/main/res/drawable/button_primary.xml" value="0.3359375" />
@@ -37,6 +30,7 @@
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.22358932595694322" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1663661089701951" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.3436093553796942" />
+        <entry key="app/src/main/res/layout/fragment_review.xml" value="0.1381340579710145" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.18854166666666666" />
         <entry key="app/src/main/res/layout/fragment_success_register.xml" value="0.2299905226650395" />
         <entry key="app/src/main/res/layout/item_row_perpustakaan.xml" value="0.7338922429535873" />

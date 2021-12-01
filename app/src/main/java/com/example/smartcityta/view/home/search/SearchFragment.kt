@@ -82,10 +82,10 @@ class SearchFragment : Fragment(),SearchPerpustakaanAdapter.OnItemClickListener 
                     perpustakaan.nama.contains(searchValue,ignoreCase = true)
                 }
 
-                if(searchValue.length <=0){
+                if(searchValue.length <0){//jika search belum disi
                     Toast.makeText(activity, "Harap isi terlebih dahulu",Toast.LENGTH_SHORT).show()
                 }
-                else if(perpusYangDicari.size > 0){
+                else if(perpusYangDicari.size >= 0){ // jika ada data yang dicari
 
                     val listPerpustakaanAdapter = SearchPerpustakaanAdapter(perpusYangDicari,this)
                     rvPerpustakaan.adapter = listPerpustakaanAdapter
