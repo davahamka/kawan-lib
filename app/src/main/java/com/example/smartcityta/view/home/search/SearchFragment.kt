@@ -96,7 +96,6 @@ class SearchFragment : Fragment(),SearchPerpustakaanAdapter.OnItemClickListener 
                 }
                 // jika ada data yang dicari
                 else if(perpusYangDicari.size >= 0){
-
                     val listPerpustakaanAdapter = SearchPerpustakaanAdapter(perpusYangDicari,this)
                     rvPerpustakaan.adapter = listPerpustakaanAdapter
                     rvPerpustakaan.layoutManager = LinearLayoutManager(requireContext())
