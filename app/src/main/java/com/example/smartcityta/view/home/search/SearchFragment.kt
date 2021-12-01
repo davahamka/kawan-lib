@@ -75,7 +75,7 @@ class SearchFragment : Fragment(),SearchPerpustakaanAdapter.OnItemClickListener 
 
 
         binding.btnSearch.setOnClickListener{
-            val searchValue = binding.etSearchPerpustakaan.text.toString()
+           val searchValue = binding.etSearchPerpustakaan.text.toString()
 
             if(searchValue.length <= 0){
 
