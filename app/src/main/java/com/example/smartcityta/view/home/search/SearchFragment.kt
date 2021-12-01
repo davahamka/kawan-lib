@@ -87,18 +87,19 @@ class SearchFragment : Fragment(),SearchPerpustakaanAdapter.OnItemClickListener 
                 val perpusYangDicari = perpustakaans.filter { perpustakaan->
                     perpustakaan.nama.contains(searchValue,ignoreCase = true)
                 }
-
-                if(searchValue.length <0){//jika search belum disi
+                //jika search belum disi
+                if(searchValue.length <0){
                     Toast.makeText(activity, "Harap isi terlebih dahulu",Toast.LENGTH_SHORT).show()
                     val listPerpustakaanAdapter = SearchPerpustakaanAdapter(perpusYangDicari,this)
                     rvPerpustakaan.adapter = null
                     rvPerpustakaan.layoutManager = LinearLayoutManager(requireContext())
                 }
-                else if(perpusYangDicari.size >= 0){ // jika ada data yang dicari
-
+                // jika ada data yang dicari
+                else if(perpusYangDicari.size >= 0){
                     val listPerpustakaanAdapter = SearchPerpustakaanAdapter(perpusYangDicari,this)
                     rvPerpustakaan.adapter = listPerpustakaanAdapter
                     rvPerpustakaan.layoutManager = LinearLayoutManager(requireContext())
+                //jika tidak ada data
                 }else {
                     Toast.makeText(activity, "Data tidak ditemukan",Toast.LENGTH_SHORT).show()
                 }
