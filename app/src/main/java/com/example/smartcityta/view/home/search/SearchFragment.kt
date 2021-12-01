@@ -75,8 +75,14 @@ class SearchFragment : Fragment(),SearchPerpustakaanAdapter.OnItemClickListener 
 
 
         binding.btnSearch.setOnClickListener{
+           val searchValue = binding.etSearchPerpustakaan.text.toString()
+
+            if(searchValue.length <= 0){
+
+            }
+
             viewModel.perpustakaans.observe(viewLifecycleOwner){perpustakaans->
-                val searchValue = binding.etSearchPerpustakaan.text.toString()
+
 
                 val perpusYangDicari = perpustakaans.filter { perpustakaan->
                     perpustakaan.nama.contains(searchValue,ignoreCase = true)
@@ -84,6 +90,9 @@ class SearchFragment : Fragment(),SearchPerpustakaanAdapter.OnItemClickListener 
 
                 if(searchValue.length <0){//jika search belum disi
                     Toast.makeText(activity, "Harap isi terlebih dahulu",Toast.LENGTH_SHORT).show()
+                    val listPerpustakaanAdapter = SearchPerpustakaanAdapter(perpusYangDicari,this)
+                    rvPerpustakaan.adapter = null
+                    rvPerpustakaan.layoutManager = LinearLayoutManager(requireContext())
                 }
                 else if(perpusYangDicari.size >= 0){ // jika ada data yang dicari
 
